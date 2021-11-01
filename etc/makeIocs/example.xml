@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<components arch="linux-x86_64">
+	<asyn.AsynIP input_eos="\n" name="ACPort" port="127.0.0.1:4002"/>
+	<ADElcomat.ADElcomat P="TS-AC-ACOLL-01" R=":CAM:" SPORT="ACPort" name="AC"/>
+	<ADCore.NDFileHDF5 NDARRAY_PORT="AC" P="TS-AC-ACOLL-01" PORT="hdf" QUEUE="64" R=":HDF5:"/>
+</components>

@@ -1,0 +1,43 @@
+# elcomat3000.template
+#
+# % macro, P, Device prefix
+# % macro, R, Device suffix
+# % macro, PORT, Asyn port
+# % macro, ADDR, Asyn address
+# % macro, TIMEOUT, Asyn timeout
+#
+#
+# % gui, $(PORT), edmtab, ADElcomat.edl, P=$(P),R=$(R)
+
+include "ADBase.template"
+
+# Indicates whether the autocollimator is connected
+record(bi, "$(P)$(R):CONNECTED")
+{
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynInt32")
+    field(VAL,  "0")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))CONNECTED")
+    field(ZNAM, "Not connected")
+    field(ONAM, "Connected")
+}
+
+# The serial number of the autocollimator
+record(longin, "$(P)$(R):SERIALNUMBER")
+{
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynInt32")
+    field(VAL,  "0")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))SERIALNUMBER")
+    field(PINI, "1")
+}
+
+# The focal length of the autocollimator
+record(longin, "$(P)$(R):FOCALLENGTH")
+{
+    field(SCAN, "I/O Intr")
+    field(DTYP, "asynInt32")
+    field(VAL,  "0")
+    field(INP,  "@asyn($(PORT),$(ADDR),$(TIMEOUT))FOCALLENGTH")
+    field(PINI, "1")
+}

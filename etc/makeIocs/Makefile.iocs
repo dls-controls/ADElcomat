@@ -1,0 +1,4 @@
+IOCS :=
+
+# These are the dirs that each IOC lives in
+IOC_DIRS := $(patsubst %, $(TOP)/iocs/%, $(IOCS))
