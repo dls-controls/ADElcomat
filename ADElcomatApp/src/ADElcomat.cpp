@@ -175,7 +175,7 @@ bool ADElcomat::dataCallback(double x, double y, int flags)
     int ndims = 1;
     size_t dims[1] = {FRAME_WIDTH};
     NDArray *pImage;
-    epicsFloat64 data[FRAME_WIDTH] = {x, y};
+    epicsFloat64 data[FRAME_WIDTH] = {x * ARCSECONDTOURAD, y * ARCSECONDTOURAD};
     epicsTimeStamp timeStamp;
     epicsTimeGetCurrent(&timeStamp);
     pImage = this->pNDArrayPool->alloc(ndims, dims, NDFloat64,
